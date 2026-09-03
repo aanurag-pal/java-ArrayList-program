@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class studentManagement {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter student name: ");
+        String name = sc.nextLine();
+
+        System.out.println("Enter marks of 5 subjects:");
+        int Maths = sc.nextInt();
+        int Science = sc.nextInt();
+        int English = sc.nextInt();
+        int Hindi = sc.nextInt();
+        int SocialScience = sc.nextInt();
+
+        int total = Maths + Science + English + Hindi + SocialScience;
+        double percentage = total / 5.0;
+
+        String grade;
+
+        if (percentage >= 90)
+            grade = "A+";
+        else if (percentage >= 80)
+            grade = "A";
+        else if (percentage >= 70)
+            grade = "B";
+        else if (percentage >= 60)
+            grade = "C";
+        else if (percentage >= 50)
+            grade = "D";
+        else
+            grade = "F";
+
+        System.out.println("\n--- Student Result ---");
+        System.out.println("Name: " + name);
+        System.out.println("Total Marks: " + total);
+        System.out.println("Percentage: " + percentage + "%");
+        System.out.println("Grade: " + grade);
+
+        if (percentage >= 50)
+            System.out.println("Result: Pass");
+        else
+            System.out.println("Result: Fail");
+
+        sc.close();
+    }
+}
