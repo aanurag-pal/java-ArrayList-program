@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+class Student {
+    String name;
+    String[] courses = new String[5];
+    int count = 0;
+
+    // Constructor
+    Student(String name) {
+        this.name = name;
+    }
+
+    // Method to register a course
+    void registerCourse(String course) {
+        if (count < 5) {
+            courses[count] = course;
+            count++;
+            System.out.println("Course registered successfully.");
+        } else {
+            System.out.println("Cannot register more than 5 courses.");
+        }
+    }
+
+    // Method to display courses
+    void displayCourses() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("Student Name: " + name);
+        System.out.println("Registered Courses:");
+
+        for (int i = 0; i < count; i++) {
+            System.out.println((i + 1) + ". " + courses[i]);
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Student Name: ");
+        String name = sc.nextLine();
+
+        Student student = new Student(name);
+
+        System.out.print("Enter number of courses: ");
+        int n = sc.nextInt();
+
+        sc.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter Course " + (i + 1) + ": ");
+            String course = sc.nextLine();
+
+            student.registerCourse(course);
+        }
+
+        student.displayCourses();
+
+        sc.close();
+    }
+}
