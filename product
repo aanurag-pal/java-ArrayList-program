@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+class Product {
+    int productId;
+    String productName;
+    double price;
+    int quantity;
+
+    // Constructor
+    Product(int productId, String productName, double price, int quantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    // Calculate total cost of the product
+    double getTotalCost() {
+        return price * quantity;
+    }
+
+    // Display product details
+    void displayProduct() {
+        System.out.println("Product ID: " + productId);
+        System.out.println("Product Name: " + productName);
+        System.out.println("Price: ₹" + price);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Total Cost: ₹" + getTotalCost());
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of products: ");
+        int n = sc.nextInt();
+
+        Product[] products = new Product[n];
+
+        double totalBill = 0;
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details of Product " + (i + 1));
+
+            System.out.print("Enter Product ID: ");
+            int id = sc.nextInt();
+
+            sc.nextLine();
+
+            System.out.print("Enter Product Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Price: ");
+            double price = sc.nextDouble();
+
+            System.out.print("Enter Quantity: ");
+            int quantity = sc.nextInt();
+
+            products[i] = new Product(id, name, price, quantity);
+
+            totalBill += products[i].getTotalCost();
+        }
+
+        System.out.println("\n--- Shopping Cart Details ---");
+
+        for (int i = 0; i < n; i++) {
+            products[i].displayProduct();
+        }
+
+        System.out.println("Total Bill: ₹" + totalBill);
+
+        double discount = 0;
+
+        if (totalBill > 5000) {
+            discount = totalBill * 0.10;
+        }
+
+        double finalBill = totalBill - discount;
+
+        System.out.println("Discount: ₹" + discount);
+        System.out.println("Final Bill: ₹" + finalBill);
+
+        sc.close();
+    }
+}
